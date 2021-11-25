@@ -5,6 +5,6 @@ mod section_header;
 use elf::ElfFile;
 
 fn main() {
-    let elf = ElfFile::new("/usr/bin/ls");
+    let elf = ElfFile::new("/usr/bin/whoami");
     println!("{}", elf);
 }

@@ -25,41 +25,41 @@ const BIT64: u8 = 2;
 
 #[derive(Debug)]
 pub struct SectionHeader {
-        // An offset to a string in the .shstrtab section that represents the
-        // name of this section.
-        sh_name: u32,
+    // An offset to a string in the .shstrtab section that represents the
+    // name of this section.
+    pub sh_name: u32,
 
-        // Identifies the type of this header.
-        sh_type: u32,
+    // Identifies the type of this header.
+    pub sh_type: u32,
 
-        // Identifies the attributes of the section.
-        sh_flags: u64,
+    // Identifies the attributes of the section.
+    pub sh_flags: u64,
 
-        // Virtual address of the section in memory, for sections that are
-        // loaded.
-        sh_addr: u64,
+    // Virtual address of the section in memory, for sections that are
+    // loaded.
+    pub sh_addr: u64,
 
-        // Offset of the section in the file image.
-        sh_offset: u64,
+    // Offset of the section in the file image.
+    pub sh_offset: u64,
 
-        // Size in bytes of the section in the file image. May be 0.
-        sh_size: u64,
+    // Size in bytes of the section in the file image. May be 0.
+    pub sh_size: u64,
 
-        // Contains the section index of an associated section. This field is
-        // used for several purposes, depending on the type of section.
-        sh_link: u32,
+    // Contains the section index of an associated section. This field is
+    // used for several purposes, depending on the type of section.
+    pub sh_link: u32,
 
-        // Contains extra information about the section. This field is used for
-        // several purposes, depending on the type of section.
-        sh_info: u32,
+    // Contains extra information about the section. This field is used for
+    // several purposes, depending on the type of section.
+    pub sh_info: u32,
 
-        // Contains the required alignment of the section. This field must be a
-        // power of two.
-        sh_addralign: u64,
+    // Contains the required alignment of the section. This field must be a
+    // power of two.
+    pub sh_addralign: u64,
 
-        // Contains the size, in bytes, of each entry, for sections that contain
-        // fixed-size entries. Otherwise, this field contains zero.
-        sh_entsize: u64,
+    // Contains the size, in bytes, of each entry, for sections that contain
+    // fixed-size entries. Otherwise, this field contains zero.
+    pub sh_entsize: u64,
 }
 
 impl SectionHeader {

@@ -46,7 +46,7 @@ const BIT32: u8 = 1;
 const BIT64: u8 = 2;
 
 #[derive(Debug)]
-struct ElfHeader {
+pub struct ElfHeader {
     // e_ident[EI_MAG0] through e_ident[EI_MAG3] - 0x7F followed by ELF(45 4c 46) in ASCII; these four bytes constitute the magic number.
     // e_ident[EI_CLASS] - This byte is set to either 1 or 2 to signify 32- or 64-bit format, respectively.
     // e_ident[EI_DATA] - This byte is set to either 1 or 2 to signify little or big endianness, respectively. This affects interpretation of multi-byte fields starting with offset 0x10.
@@ -54,52 +54,52 @@ struct ElfHeader {
     // e_ident[EI_OSABI] - Identifies the target operating system ABI.
     // e_ident[EI_ABIVERSION] - Further specifies the ABI version. Its interpretation depends on the target ABI. Linux kernel (after at least 2.6) has no definition of it,[6] so it is ignored for statically-linked executables. In that case, offset and size of EI_PAD are 8.
     // e_ident[EI_PAD] - Currently unused, should be filled with zeros.
-    e_ident: [u8; 0x10],
+    pub e_ident: [u8; 0x10],
 
     // Identifies object file type.
-    e_type: u16,
+    pub e_type: u16,
 
     // Specifies target instruction set architecture.
-    e_machine: u16,
+    pub e_machine: u16,
 
     // Set to 1 for the original version of ELF.
-    e_version: u32,
+    pub e_version: u32,
 
     // This is the memory address of the entry point from where the process
     // starts executing. This field is either 32 or 64 bits long depending on
     // the format defined earlier.
-    e_entry: u64,
+    pub e_entry: u64,
 
     // Points to the start of the program header table. It usually follows the
     // file header immediately, making the offset 0x34 or 0x40 for 32- and
     // 64-bit ELF executables, respectively.
-    e_phoff: u64,
+    pub e_phoff: u64,
 
     // Points to the start of the section header table.
-    e_shoff: u64,
+    pub e_shoff: u64,
 
     // Interpretation of this field depends on the target architecture.
-    e_flags: u32,
+    pub e_flags: u32,
 
     // Contains the size of this header, normally 64 Bytes for 64-bit and 52
     // Bytes for 32-bit format.
-    e_ehsize: u16,
+    pub e_ehsize: u16,
 
     // Contains the size of a program header table entry.
-    e_phentsize: u16,
+    pub e_phentsize: u16,
 
     // Contains the number of entries in the program header table.
-    e_phnum: u16,
+    pub e_phnum: u16,
 
     // Contains the size of a section header table entry.
-    e_shentsize: u16,
+    pub e_shentsize: u16,
 
     // Contains the number of entries in the section header table.
-    e_shnum: u16,
+    pub e_shnum: u16,
 
     // Contains index of the section header table entry that contains the
     // section names.
-    e_shstrndx: u16,
+    pub e_shstrndx: u16,
 }
 
 impl ElfHeader {
@@ -193,11 +193,11 @@ impl ElfHeader {
 }
 
 pub struct ElfFile {
-    path:            String,
-    raw_bytes:       Vec<u8>,
-    header:          ElfHeader,
-    program_headers: Vec<ProgramHeader>,
-    section_headers: Vec<SectionHeader>,
+    pub path:            String,
+    pub raw_bytes:       Vec<u8>,
+    pub header:          ElfHeader,
+    pub program_headers: Vec<ProgramHeader>,
+    pub section_headers: Vec<SectionHeader>,
 }
 
 impl std::fmt::Display for ElfFile {

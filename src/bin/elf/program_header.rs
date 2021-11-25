@@ -24,30 +24,30 @@ const BIT64: u8 = 2;
 #[derive(Debug)]
 pub struct ProgramHeader {
     // Identifies the type of the segment.
-    p_type: u32,
+    pub p_type: u32,
 
     // Segment-dependent flags (position for 64-bit structure).
-    p_flags: u32,
+    pub p_flags: u32,
 
     // Offset of the segment in the file image.
-    p_offset: u64,
+    pub p_offset: u64,
 
     // Virtual address of the segment in memory.
-    p_vaddr: u64,
+    pub p_vaddr: u64,
 
     // On systems where physical address is relevant, reserved for segment's
     // physical address.
-    p_paddr: u64,
+    pub p_paddr: u64,
 
     // Size in bytes of the segment in the file image. May be 0.
-    p_filesz: u64,
+    pub p_filesz: u64,
 
     // Size in bytes of the segment in memory. May be 0.
-    p_memsz: u64,
+    pub p_memsz: u64,
 
     // 0 and 1 specify no alignment. Otherwise should be a positive, integral
     // power of 2, with p_vaddr equating p_offset modulus p_align.
-    p_align: u64,
+    pub p_align: u64,
 }
 
 impl ProgramHeader {

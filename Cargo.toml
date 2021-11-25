@@ -1,7 +1,18 @@
+# The root binary located at src/main.rs
 [package]
-name = "elf-parser"
+name = "parsers"
 version = "0.1.0"
 edition = "2018"
+
+# Sub binary located at src/bin/elf/main.rs
+[[bin]]
+name = "elf-parser"
+path = "src/bin/elf/main.rs"
+
+# Sub binary located at src/bin/pe/main.rs
+[[bin]]
+name = "pe-parser"
+path = "src/bin/pe/main.rs"
 
 # See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
 
